@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "IExe.h"
 #include "BaseInstance.h"
+#include "Pipline.h"
 
 SDL_Window *window = nullptr;
 SDL_Renderer *render = nullptr;
@@ -30,7 +31,8 @@ int main(int argc, char *argv[]) {
 		return 3;
 	}
 	
-	instance = new BaseInstance(render);
+	//instance = new BaseInstance(render);
+	instance = new Pipeline(render);
 
 	SDL_Event e;//ÊÂ¼þ
 	bool quit = false;
