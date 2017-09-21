@@ -1,9 +1,13 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 #include "SDL.h"
 #include "IExe.h"
 #include "BaseInstance.h"
 #include "Pipline.h"
+
+
+uint64_t mLastFrameNs = 0;
 
 SDL_Window *window = nullptr;
 SDL_Renderer *render = nullptr;
@@ -41,6 +45,9 @@ int main(int argc, char *argv[]) {
 		instance->init();
 	}
 
+	float second_cout = 0;
+	float fps = 0;
+
 	while (!quit) {
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
@@ -56,7 +63,27 @@ int main(int argc, char *argv[]) {
 		SDL_RenderClear(render);
 
 		if (instance != nullptr) {
-			instance->update();
+			timespec now;
+			timespec_get(&now, 1);
+			long nowNs = now.tv_sec * 1000000000ull + now.tv_nsec;
+			if (mLastFrameNs > 0) {
+				float dt = float(nowNs - mLastFrameNs) * 0.000000001f;
+
+				second_cout += dt;
+				fps++;
+				//std::cout << "time " << dt << std::endl;
+				if (second_cout > 1.0f) {
+					std::cout << "fps =  " << fps << std::endl;
+
+					second_cout = 0;
+					fps = 0;
+				}
+				instance->update(dt);
+			}
+			//SDL_Delay(1000);
+			mLastFrameNs = nowNs;
+			//clock_gettime(CLOCK_MONOTONIC, &now);
+			//std::cout << "time " << nowNs << std::endl;
 		}
 
 		//cout << "update clear" << endl;

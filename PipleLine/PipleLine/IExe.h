@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+
 class IExe{
 protected:
 	SDL_Renderer *m_render;
@@ -19,7 +20,7 @@ public:
 		SDL_RenderDrawPoint(m_render, x, y);
 	}
 	virtual int init() = 0;
-	virtual void update() = 0;
+	virtual void update(float delta) = 0;
 	virtual void destory() = 0;
 };//end class
 

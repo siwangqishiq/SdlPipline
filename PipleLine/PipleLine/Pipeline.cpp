@@ -8,8 +8,9 @@ int Pipeline::init(){
 	return 0;
 }
 
-void Pipeline::update(){
-	//std::cout << "pipleline update" << std::endl;
+void Pipeline::update(float delta){
+	//std::cout << "pipleline update" << delta<< std::endl;
+	//SDL_Delay(500);
 }
 
 void Pipeline::destory(){

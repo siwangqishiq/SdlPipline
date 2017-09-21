@@ -10,7 +10,7 @@ public:
 	// Í¨¹ý IExe ¼Ì³Ð
 	int init() override;
 
-	void update() override;
+	void update(float delta) override;
 
 	void destory() override;
 protected:

@@ -11,7 +11,7 @@ public:
 
 	// Í¨¹ý IExe ¼Ì³Ð
 	virtual int init() override;
-	virtual void update() override;
+	virtual void update(float delta) override;
 	virtual void destory() override;
 };
 

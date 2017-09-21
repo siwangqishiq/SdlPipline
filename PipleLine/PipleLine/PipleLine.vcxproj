@@ -126,11 +126,13 @@
     <ClCompile Include="BaseInstance.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pipeline.cpp" />
+    <ClCompile Include="PipleObj.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseInstance.h" />
     <ClInclude Include="IExe.h" />
     <ClInclude Include="PipelineMath.hpp" />
+    <ClInclude Include="PipleObj.h" />
     <ClInclude Include="Pipline.h" />
     <ClInclude Include="unitTest.hpp" />
   </ItemGroup>
